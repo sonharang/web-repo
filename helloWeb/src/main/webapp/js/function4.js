@@ -27,13 +27,16 @@ document.getElementById('saveBtn').onclick = function(e){
 	let name = document.getElementById('name').value;
 	let age = document.getElementById('age').value;
 	let height = document.getElementById('height').value;
-	if(name == ""){
-		window.alert("값을 입력하세요.");
-	}else{
+	//교수님 방법
+	if(!name || !age || !height){alert('값을 입력하세요'); return;}
+	//if(name == ""){
+		//window.alert("값을 입력하세요.");
+	//}else{
 	const mem =new Member(name, age, height);
 	let str = makeTr(mem);// <tr>..</tr>
 	document.getElementById('list').innerHTML += str;
-	}
+	//}
+	
 	//function Member(), makeTr(member), 
 	
 	//입력 초기화
