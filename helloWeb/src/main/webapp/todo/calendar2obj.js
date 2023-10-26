@@ -52,3 +52,4 @@ const cal = {
 }
 
 cal.showCalendar();
+export{cal};
