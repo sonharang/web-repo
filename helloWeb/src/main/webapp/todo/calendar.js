@@ -1,3 +1,7 @@
+//Date 객체
+	const today = new Date();
+	console.log("오늘날짜 : ", today.getDate());
+
 const week = ['일','월','화','수','목','금','토'];
 const month = [31,28,31,30,31,30,31,31,30,31,30,31];
 const calendar = {
@@ -17,9 +21,9 @@ const calendar = {
 		let strBody = '';
 		strBody += '<tbody><tr>'
 		for(let i =1; i<=month[monthday]; i++){
-			strBody += `<td>${i}</td>`
+			strBody += `<td align = "right">${i}</td>`
 			if(i%7==0){
-				strBody +='<tr></tr>'
+				strBody +='</tr><tr>'
 			}
 		}
 		strBody += '</tr></tbody</table><br>'
