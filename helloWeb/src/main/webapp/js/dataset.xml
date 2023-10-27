@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+<record>
+    <id>1</id>
+    <first_name>Lucian</first_name>
+    <email>lslott0@blogtalkradio.com</email>
+</record>
+<record>
+    <id>2</id>
+    <first_name>Darcey</first_name>
+    <email>dyuryshev1@youtu.be</email>
+</record>
+<record>
+    <id>3</id>
+    <first_name>Irvine</first_name>
+    <email>ilinstead2@tmall.com</email>
+</record>
+<record>
+    <id>4</id>
+    <first_name>Teddy</first_name>
+    <email>tbrett3@foxnews.com</email>
+</record>
+<record>
+    <id>5</id>
+    <first_name>Gib</first_name>
+    <email>gtomik4@timesonline.co.uk</email>
+</record>
+</dataset>
