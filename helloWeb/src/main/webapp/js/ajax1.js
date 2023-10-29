@@ -40,17 +40,17 @@ let newMember ={mid: "M009", pass: "9999", name: "민식", phone: "010-9999-0000
 //1 ajax 실행
 let xhtp = new XMLHttpRequest();
 
-//json
+//JSON
 
-xhtp.open('get', '../MemberListServ'); 
-xhtp.send();
-xhtp.onload = loadJson;
-
-//xml
-
-//xhtp.open('get', '../MemberListServ2');
+//xhtp.open('get', '../MemberListServ'); 
 //xhtp.send();
-//xhtp.onload = loadXML;
+//xhtp.onload = loadJson;
+
+//XML
+
+xhtp.open('get', '../MemberListServ2');
+xhtp.send();
+xhtp.onload = loadXML;
 
 function loadJson(){
 	 console.log(xhtp.responseText);
