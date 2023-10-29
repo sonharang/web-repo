@@ -39,19 +39,31 @@ let newMember ={mid: "M009", pass: "9999", name: "민식", phone: "010-9999-0000
 
 //1 ajax 실행
 let xhtp = new XMLHttpRequest();
+
 //json
-//xhtp.open('get', '../MemberListServ'); 
-//xhtp.send();
-//xhtp.onload = loadJson;
-//xml
-xhtp.open('get', '../MemberListServ2');
+
+xhtp.open('get', '../MemberListServ'); 
 xhtp.send();
-xhtp.onload = loadXML;
+xhtp.onload = loadJson;
+
+//xml
+
+//xhtp.open('get', '../MemberListServ2');
+//xhtp.send();
+//xhtp.onload = loadXML;
 
 function loadJson(){
-	console.log(xhtp.responseText);
-	let result = JSON.parse(xhtp.responseText);
-	console.log(result);
+	 console.log(xhtp.responseText);
+
+    let result = JSON.parse(xhtp.responseText);
+
+    console.log(result);
+
+    let titles = ["회원번호", "비밀번호", "이름", "연락처"];
+
+    let tb = table.makeTable(titles, result);
+
+    document.getElementById('show').innerHTML = tb;
 }
 
 function loadXML() {
