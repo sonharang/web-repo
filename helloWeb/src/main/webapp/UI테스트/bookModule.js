@@ -1,24 +1,18 @@
-//ajaxModule.js
-
 const table = {
 
-	makeHead(titles = ['회원아이디', '비밀번호', '이름', '연락처']) {
+	makeHead(titles = ['도서코드', '도서명', '저자', '출판사', '가격','삭제']) {
 		let headTag = "<thead><tr>";
+		headTag += "<th>" + "<input type = 'checkbox'>" + "</th>";
 		titles.forEach(title => {
 			headTag += "<th>" + title + "</th>";
 		})
 		headTag += "</tr></thead>";
 		return headTag;
 	},
-	makeBody(dataAry = [{ mid, pass, name, phone }]) { //데이터는 객체 타입으로 받는게 좋다.
+	makeBody(dataAry = [{ id, name, writer, publish, price }]) { 
 		let bodyTag = "<tbody id = 'list'>";
 		dataAry.forEach(item => {
 			bodyTag += this.makeTr(item);
-			/*bodyTag += "<tr>";
-			for (let prop in item) {
-				bodyTag += "<td>" + item[prop] + "</td>";
-			}
-			bodyTag += "</tr>"; */
 		})
 		bodyTag += "</tbody>";
 		return bodyTag;
@@ -32,13 +26,18 @@ const table = {
 		return tableTag;
 	},
 	makeTr(member = {}) {
-		let trTag = "<tr onclick = 'showInfo(event,this)'>"; //onclick(이벤트) , showInfo(이벤트핸들러)
+		let trTag = "<tr>"; 
+		trTag +="<td><input type = 'checkbox'></td>"
 		for (let prop in member) {
 			trTag += "<td>" + member[prop] + "</td>";
 		}
+		trTag += '<td><button onclick = "this.parentElement.parentElement.remove()">삭제</button></td>';
 		trTag += "</tr>";
 		return trTag;
 	}
 }
 export { table };
 
+/**
+ * 
+ */

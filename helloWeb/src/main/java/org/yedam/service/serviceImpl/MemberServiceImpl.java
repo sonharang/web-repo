@@ -52,5 +52,80 @@ public List<MemberVO> memberList() {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public boolean addMember(MemberVO vo) {
+		String sql = "insert into member2 values( ?, ?, ?, ?)";
+		try {
+			conn = dataSource.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,vo.getMid());
+			psmt.setString(2,vo.getPass());
+			psmt.setString(3,vo.getName());
+			psmt.setString(4,vo.getPhone());
+			
+			int r = psmt.executeUpdate(); //반환값은 데이터처리 건수.
+			if(r == 1 ) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			close();
+		}
+		
+		return false;
+	}
+	
+	
+	@Override
+	public boolean modMember(MemberVO vo) {
+		String sql = "update member2 set pass = ?,name = ?, phone = ? where mid = ?";
+		try {
+			conn = dataSource.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,vo.getPass());
+			psmt.setString(2,vo.getName());
+			psmt.setString(3,vo.getPhone());
+			psmt.setString(4,vo.getMid());
+			
+			int r = psmt.executeUpdate(); //반환값은 데이터처리 건수.
+			if(r == 1 ) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			close();
+		}
+		
+		return false;
+	}
+	@Override
+	public boolean delMember(MemberVO vo) {
+		String sql = "delete from member2 where mid = ? pass = ? name = ? phone = ?" ;
+		try {
+			conn = dataSource.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,vo.getMid());
+			psmt.setString(2,vo.getPass());
+			psmt.setString(3,vo.getName());
+			psmt.setString(4,vo.getPhone());
+			
+			int r = psmt.executeUpdate(); //반환값은 데이터처리 건수.
+			if(r == 1 ) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			close();
+		}
+		
+		return false;
+	}
 }
 

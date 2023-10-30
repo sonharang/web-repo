@@ -36,7 +36,7 @@ public class MemberListServ extends HttpServlet {
 		// TODO Auto-generated method stub
 		MemberService svc = new MemberServiceImpl();
 		List<MemberVO> list = svc.memberList();
-		System.out.println("Json 데이터 입니다.");
+		System.out.println("JSON 데이터 입니다.");
 		
 		response.setContentType("text/json; charset= UTF-8");
 		

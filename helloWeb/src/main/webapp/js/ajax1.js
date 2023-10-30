@@ -34,7 +34,7 @@ setTimeout(function() {
 
 
 //
-let newMember ={mid: "M009", pass: "9999", name: "민식", phone: "010-9999-0000"};
+let newMember = { mid: "M009", pass: "9999", name: "민식", phone: "010-9999-0000" };
 //newMember 값을 활용해서 tbody = "list" 추가
 
 //1 ajax 실행
@@ -52,18 +52,18 @@ xhtp.open('get', '../MemberListServ2');
 xhtp.send();
 xhtp.onload = loadXML;
 
-function loadJson(){
-	 console.log(xhtp.responseText);
+function loadJson() {
+	console.log(xhtp.responseText);
 
-    let result = JSON.parse(xhtp.responseText);
+	let result = JSON.parse(xhtp.responseText);
 
-    console.log(result);
+	console.log(result);
 
-    let titles = ["회원번호", "비밀번호", "이름", "연락처"];
+	let titles = ["회원번호", "비밀번호", "이름", "연락처"];
 
-    let tb = table.makeTable(titles, result);
+	let tb = table.makeTable(titles, result);
 
-    document.getElementById('show').innerHTML = tb;
+	document.getElementById('show').innerHTML = tb;
 }
 
 function loadXML() {
@@ -82,16 +82,16 @@ function loadXML() {
 			phone: record.children[3].textContent//phone
 		}
 		dataAry.push(obj);
-		
+
 	}
 	dataAry.push(newMember);
 	let result = table.makeTable(titles, dataAry);
 	console.log(result);
 	document.getElementById("show").innerHTML = result;
-	
+
 	//newMember 추가 다른 방법 ajax 실행이 되고 나서 추가하는 기능 실행
-//	let tr  = '<tr><td>' + newMember.mid + '</td><td>' + newMember.pass + '</td><td>' + newMember.name + '</td><td>' + newMember.phone + '</td></tr>';
-	
-//	document.getElementById('list').innerHTML += tr;
+	//	let tr  = '<tr><td>' + newMember.mid + '</td><td>' + newMember.pass + '</td><td>' + newMember.name + '</td><td>' + newMember.phone + '</td></tr>';
+
+	//	document.getElementById('list').innerHTML += tr;
 }// end of onload 함수.
 
