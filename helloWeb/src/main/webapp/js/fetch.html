@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>js/fetch.html</title>
+	<script src="fetch1.js" type="module"></script>	
+</head>
+	
+<body>
+	<div id="show"></div>
+	<script>
+		//promise 객체 (fullfilled, pending, rejected)
+		const promise = new Promise(function (resolve) {
+			setTimeout(function () {
+				console.log('실행.');
+				resolve('Success');
+			}, 500);
+
+		});
+		//resolve 정상적으로 처리되면 Success 라는 값을 then에 넘기고 then 메소드 실행
+		promise
+			.then((resolve) => {
+				console.log('then: ', resolve);
+				return 'OK'; //promise 타입으로 반환 			
+			})
+			.then((result) => {
+				console.log('2then: ', result);
+				return 'message';
+			})
+			.catch((err) => {
+				console.log('error: ', err); //오류나면 catch구문 실행
+			})
+	</script>
+</body>
+
+</html>

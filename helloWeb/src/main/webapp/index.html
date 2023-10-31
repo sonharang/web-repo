@@ -28,6 +28,25 @@
 	<p> a 상태로 변경 </p>
 	<p> b 상태로 변경 </p>
 	<p> 변경 확인</p>
+	<script>
+		//제어
+		let body = document.querySelector('body')
+		//console.log(body.children[5].children[2].innerHTML = "멜론");
+		//console.log(body.parentElement.innerHTML ="");
+		//document.querySelector('ul').innerHTML = '<p>Test</p>';
+		//li의 다섯번째 딸기
+		let li5 = document.createElement('li');
+		li5.innerHTML = '딸기';
+		console.log(li5);
+		document.querySelector('ul').appendChild(li5); //부모요소기준 하위요소 붙이는것 appendChild
+		
+		let p5 = document.createElement('p');
+		p5.setAttribute('class', 'fifth'); //class,id,style등등 붙이는것 setAttribute
+		p5.innerHTML = 'c 상태로 변경';
+		console.log(p5);
+		document.querySelector('p:nth-of-type(4)').after(p5); //어떤 요소기준 뒤에 붙이는것 after
+			
+	</script>
 </body>
 
 </html>
