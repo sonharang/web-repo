@@ -6,34 +6,31 @@ import co.yedam.student.service.StudentService;
 import co.yedam.student.service.StudentVO;
 
 public class StudentServiceImpl implements StudentService {
+	StudentDAO dao = new StudentDAO();
+
 	@Override
 	public boolean addStudent(StudentVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.insert(vo) == 1;
 	}
 
 	@Override
 	public boolean editStudent(StudentVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.update(vo) == 1;
 
 	}
 
 	@Override
 	public boolean removeStudent(String sid) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.delete(sid) == 1;
 	}
 
 	@Override
 	public List<StudentVO> listStudent() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.studentList();
 	}
 
 	@Override
 	public StudentVO getStudent(String sid) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.select(sid);
 	}
 }
