@@ -59,14 +59,16 @@ public class StudentDAO {
 
 	public int update(StudentVO vo) {
 		String sql = "UPDATE STUDENT SET STUDENT_NAME = ?, STUDENT_PASSWORD = ?, "
-				+ "STUDENT_DEPT = ? WHERE STUDENT_ID = ?";
+				+ "STUDENT_DEPT = NVL(?, STUDENT_DEPT),STUDENT_BIRTHDAY = ? WHERE STUDENT_ID = ?";
 		conn = ds.getConnection();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getStudentName());
 			psmt.setString(2, vo.getStudentPassword());
 			psmt.setString(3, vo.getStudentDept());
-			psmt.setString(4, vo.getStudentId());
+			psmt.setString(4, sdf.format(vo.getStudentBirthday()));
+			psmt.setString(5, vo.getStudentId());
 
 			int r = psmt.executeUpdate();
 			return r;
