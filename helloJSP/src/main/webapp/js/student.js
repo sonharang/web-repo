@@ -74,7 +74,7 @@ function modifyCallback(e) {
 			if(result.retCode =='OK'){
 				let newTr = makeTr(result.vo);
 		
-				let targetTr = document.querySelector('tr[data-sid='+result.VO.studentId+']');
+				let targetTr = document.querySelector('tr[data-sid='+result.vo.studentId+']');
 				let parentEle = document.querySelector('#list');
 				parentEle.replaceChild(newTr, targetTr);
 				console.log(document.getElementById("myModal"));
