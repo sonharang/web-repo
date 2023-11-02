@@ -43,10 +43,10 @@ public class ModStudentServlet extends HttpServlet {
 		StudentService svc = new StudentServiceImpl();
 		if (svc.editStudent(vo)) {
 			map.put("retCode", "OK");
-			map.put("VO", vo);
+			map.put("vo", vo);
 		} else {
 			map.put("retCode", "NG");
-			map.put("VO", vo);
+			map.put("vo", vo);
 		}
 		svc.addStudent(vo);
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd") // 포맷
