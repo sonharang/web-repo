@@ -72,14 +72,14 @@ function modifyCallback(e) {
 		.then(resolve => resolve.json())
 		.then(result => { 
 			if(result.retCode =='OK'){
-				let newTr = makeTr(result.VO);
-					//오류찾기
-					console.log(result.VO);
+				let newTr = makeTr(result.vo);
+		
 				let targetTr = document.querySelector('tr[data-sid='+result.VO.studentId+']');
 				let parentEle = document.querySelector('#list');
 				parentEle.replaceChild(newTr, targetTr);
 				console.log(document.getElementById("myModal"));
-				document.getElementById("myModal").style.display='none';
+				modal.style.display = "none";
+			
 				alert('수정 성공');
 				
 			}else{
