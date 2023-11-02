@@ -98,7 +98,7 @@ public class StudentDAO {
 	public List<StudentVO> studentList() {
 		List<StudentVO> students = new ArrayList<>();
 		StudentVO vo;
-		String sql = "SELECT * FROM STUDENT";
+		String sql = "SELECT * FROM STUDENT ORDER BY STUDENT_DEPT,STUDENT_NAME";
 		conn = ds.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);

@@ -61,8 +61,14 @@ function genTable(rawData = [], page = 1) {
 	//lastPage는 버튼수
 	let lastPage = Math.ceil(totalCnt / 5); //ceil : 올림	
 	
-	let endPage = Math.ceil(page / 5) * 5;
-	let beginPage = endPage -4;
+	//let endPage = Math.ceil(page / 5) * 5;
+	let beginPage;
+	if(page>3){
+		beginPage = page - 2
+	}else{
+		beginPage = 1;
+	}
+	let endPage = beginPage + 4;
 	let prevPage = false, nextPage = false;
 	
 	//10단위씩

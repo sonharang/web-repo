@@ -60,7 +60,10 @@ public class StudentListServlet extends HttpServlet {
 		List<StudentVO>list = svc.listStudent();
 		
 		//자바 객체 -> json 문자열로 변경
-		Gson gson = new GsonBuilder().create();
+		Gson gson = new GsonBuilder()
+				.setDateFormat("yyyy-MM-dd") //포맷
+				.create();
+		
 		String json = gson.toJson(list);
 		
 		
