@@ -3,6 +3,8 @@ package co.yedam.common;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import co.yedam.board.service.BoardVO;
+import co.yedam.board.serviceImpl.BoardDAO;
 import co.yedam.student.service.StudentService;
 import co.yedam.student.service.StudentVO;
 import co.yedam.student.serviceImpl.StudentServiceImpl;
@@ -27,14 +29,21 @@ public class MainExe {
 //	}
 
 	public static void main(String[] args) {
-
-		StudentService svc = new StudentServiceImpl();
+		BoardDAO dao = new BoardDAO();
+		BoardVO vo = new BoardVO();
+		System.out.println(dao.boardList());
+		
+		
+		
+		
+		
+		//StudentService svc = new StudentServiceImpl();
 		
 		
 		//추가
 		// 학생아이디, 비밀번호, 이름, 학과, 생일
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		StudentVO vo = new StudentVO();
+		//StudentVO vo = new StudentVO();
 //		vo.setStudentId("newbie");
 //		vo.setStudentName("신입생");
 //		vo.setStudentPassword("1234");
@@ -72,10 +81,10 @@ public class MainExe {
 //			System.out.println("에러발생.");
 //		}
 //		//조회
-		System.out.println(svc.getStudent("kim"));
+	//	System.out.println(svc.getStudent("kim"));
 		
-		System.out.println("=======================================================================================================================");
-		svc.listStudent().forEach(student -> System.out.println(student));//
+		//System.out.println("=======================================================================================================================");
+		//svc.listStudent().forEach(student -> System.out.println(student));//
 
 	}
 
