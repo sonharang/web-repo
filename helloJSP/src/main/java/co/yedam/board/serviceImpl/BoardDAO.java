@@ -35,8 +35,7 @@ public class BoardDAO {
 	}
 
 	public int insert(BoardVO vo) {
-		String sql = "INSERT INTO BOARD(BOARD_NO, TITLE, CONTENT, "
-				+ "WRITER, WRITER_DATE, VIEW_CNT, IMAGE, LAST_UPDATE) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO BOARD(BOARD_NO, TITLE, CONTENT, WRITER) VALUES(SEQ_BOARD.NEXTVAL,?, ?, ?, ?)";
 		conn = ds.getConnection();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
@@ -45,11 +44,6 @@ public class BoardDAO {
 			psmt.setString(2, vo.getTitle());
 			psmt.setString(3, vo.getContent());
 			psmt.setString(4, vo.getWriter());
-			psmt.setString(5, sdf.format(vo.getWriteDate()));
-			psmt.setInt(6, vo.getViewCnt());
-			psmt.setString(7, vo.getImage());
-			psmt.setString(8, sdf.format(vo.getLastUpdate()));
-
 			int r = psmt.executeUpdate();
 			return r;
 			// System.out.println("DB연결성공");
