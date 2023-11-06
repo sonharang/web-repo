@@ -35,15 +35,15 @@ public class BoardDAO {
 	}
 
 	public int insert(BoardVO vo) {
-		String sql = "INSERT INTO BOARD(BOARD_NO, TITLE, CONTENT, WRITER) VALUES(SEQ_BOARD.NEXTVAL,?, ?, ?, ?)";
+		String sql = "INSERT INTO BOARD(BOARD_NO, TITLE, CONTENT, WRITER, IMAGE) VALUES(SEQ_BOARD.NEXTVAL,?, ?, ?, ?)";
 		conn = ds.getConnection();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getBoardNo());
-			psmt.setString(2, vo.getTitle());
-			psmt.setString(3, vo.getContent());
-			psmt.setString(4, vo.getWriter());
+			psmt.setString(1, vo.getTitle());
+			psmt.setString(2, vo.getContent());
+			psmt.setString(3, vo.getWriter());
+			psmt.setString(4, vo.getImage());
 			int r = psmt.executeUpdate();
 			return r;
 			// System.out.println("DB연결성공");
@@ -56,16 +56,17 @@ public class BoardDAO {
 	}
 
 	public int updateBoard(BoardVO vo) {
-		String sql = "UPDATE BOARD SET TITLE = ?, CONTENT = ?, "
-				+ "IMAGE = NVL(?, IMAGE),LAST_UPDATE = SYSDATE WHERE BOARD_NO = ?";
+		String sql = "UPDATE BOARD SET TITLE = ?,WRITER = ? , "
+				+ "CONTENT = ?, IMAGE = NVL(?, IMAGE),LAST_UPDATE = SYSDATE WHERE BOARD_NO = ?";
 		conn = ds.getConnection();
 		// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getTitle());
-			psmt.setString(2, vo.getContent());
-			psmt.setString(3, vo.getImage());
-			psmt.setInt(4, vo.getBoardNo());
+			psmt.setString(2, vo.getWriter());
+			psmt.setString(3, vo.getContent());
+			psmt.setString(4, vo.getImage());
+			psmt.setInt(5, vo.getBoardNo());
 
 			int r = psmt.executeUpdate();
 			return r;

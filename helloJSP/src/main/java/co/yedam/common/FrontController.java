@@ -14,6 +14,10 @@ import co.yedam.board.web.AddBoardControl;
 import co.yedam.board.web.BoardFormControl;
 import co.yedam.board.web.BoardListControl;
 import co.yedam.board.web.GetBoardControl;
+import co.yedam.board.web.ModifyBoardControl;
+import co.yedam.board.web.ModifyFormControl;
+import co.yedam.board.web.RemoveBoardControl;
+import co.yedam.board.web.RemoveFormControl;
 
 public class FrontController extends HttpServlet {
 
@@ -26,13 +30,24 @@ public class FrontController extends HttpServlet {
 		// map.put("/second.do", new SecondControl());
 		map.put("/boardList.do", new BoardListControl()); // 목록
 		map.put("/getBoard.do", new GetBoardControl()); // 조회
+		//등록화면
 		map.put("/boardForm.do", new BoardFormControl()); // 등록
 		map.put("/addBoard.do", new AddBoardControl()); // 추가 처리
+		//수정화면
+		map.put("/modifyForm.do", new ModifyFormControl()); //수정
+		map.put("/modifyBoard.do", new ModifyBoardControl()); //처리
+		//삭제
+		map.put("/removeForm.do", new RemoveFormControl()); //삭제
+		map.put("/removeBoard.do", new RemoveBoardControl()); //처리
+		
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("FrontController");
+		//System.out.println("FrontController");
+		//요청정보의 한글 인코딩 방식
+		req.setCharacterEncoding("UTF-8");
+		
 		String uri = req.getRequestURI(); // http://localhost8080/helloJSP/boardList.do
 		String context = req.getServletContext().getContextPath(); // helloJSP
 		String page = uri.substring(context.length());
