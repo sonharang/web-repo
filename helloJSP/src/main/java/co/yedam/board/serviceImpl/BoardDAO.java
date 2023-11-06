@@ -171,4 +171,25 @@ public class BoardDAO {
 		}
 		return 0; // 처리가 된 건수가 없음 : 에러
 	}
+
+	// 아이디, 비밀번호 => 조회값 : boolean
+	public boolean getUser(String id, String pw) {
+		String sql = "SELECT * FROM MEMBER2 WHERE MID = ? AND PASS = ?";
+		conn = ds.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setString(2, pw);
+
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return false; // 처리가 된 건수가 없음 : 에러
+	}
 }// end of dao
