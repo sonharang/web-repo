@@ -35,7 +35,7 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new LoginControl());
 		// 로그아웃
 		map.put("/logout.do", new LogoutControl());
-		// 조회
+		// 보드조회
 		map.put("/boardList.do", new BoardListControl()); // 목록
 		map.put("/getBoard.do", new GetBoardControl()); // 조회
 		// 등록화면
@@ -47,7 +47,8 @@ public class FrontController extends HttpServlet {
 		// 삭제
 		map.put("/removeForm.do", new RemoveFormControl()); // 삭제
 		map.put("/removeBoard.do", new RemoveBoardControl()); // 처리
-
+		//회원조회
+		map.put("/memberList.do", new MemberListControl());
 	}
 
 	@Override

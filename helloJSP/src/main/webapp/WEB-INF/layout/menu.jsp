@@ -17,6 +17,7 @@
 <body>
 	<%
 	String logId = (String) session.getAttribute("logId"); //없으면 null값 리턴
+	String respon = (String) session.getAttribute("respon");
 	%>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar-->
@@ -36,16 +37,16 @@
 			}
 			%>
 			<div class="list-group list-group-flush">
-				<a
-					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="boardList.do">게시판 목록</a> <a <%if (logId == null) {%>
-					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="loginForm.do">로그인 화면</a> <a <%} else {%>
-					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="logout.do">로그아웃</a> <a <%}%>
-					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="#!">Overview</a> <a
-					class="list-group-item list-group-item-action list-group-item-light p-3"
+				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">게시판 목록</a>
+				<%if (logId == null) {%>
+				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="loginForm.do">로그인 화면</a> 
+				<%} else {%>
+				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">로그아웃</a>
+				<%}%>
+				
+				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberList.do">회원관리</a> 
+				
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"
 					href="#!">Events</a> <a
 					class="list-group-item list-group-item-action list-group-item-light p-3"
 					href="#!">Profile</a> <a

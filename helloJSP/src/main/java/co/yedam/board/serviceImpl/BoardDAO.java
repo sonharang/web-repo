@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.yedam.board.service.BoardVO;
+import co.yedam.board.service.MemberVO;
 import co.yedam.common.DataSource;
 
 public class BoardDAO {
@@ -173,23 +174,51 @@ public class BoardDAO {
 	}
 
 	// 아이디, 비밀번호 => 조회값 : boolean
-	public boolean getUser(String id, String pw) {
+	public MemberVO getUser(String id, String pw) {
+		MemberVO vo = new MemberVO();
 		String sql = "SELECT * FROM MEMBER2 WHERE MID = ? AND PASS = ?";
 		conn = ds.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
 			psmt.setString(2, pw);
-
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				return true;
+				vo.setMid(rs.getString("MID"));
+				vo.setPass(rs.getString("PASS"));
+				vo.setResponsibility(rs.getString("RESPONSIBILITY"));
+				return vo;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return false; // 처리가 된 건수가 없음 : 에러
+		return null; // 처리가 된 건수가 없음 : 에러
+	}
+	public List<MemberVO> memberlist(){
+		List<MemberVO> members = new ArrayList<>();
+		MemberVO vo;
+		String sql = "SELECT * FROM MEMBER2 ORDER BY MID";
+		conn = ds.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			ResultSet rs = psmt.executeQuery();
+			while (rs.next()) {
+				vo = new MemberVO();
+				vo.setMid(rs.getString("MID"));
+				vo.setPass(rs.getString("PASS"));
+				vo.setName(rs.getString("NAME"));
+				vo.setPhone(rs.getString("PHONE"));
+				
+				members.add(vo);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return members; // 처리가 된 건수가 없음 : 에러
 	}
 }// end of dao

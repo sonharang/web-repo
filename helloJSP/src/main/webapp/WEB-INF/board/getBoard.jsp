@@ -27,8 +27,10 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 		</tr>
 		<tr>
 			<th>이미지</th>
-			<td colspan="3"><img width="150px"
-				src="images/<%=vo.getImage()%>" width="100px"></td>
+			<td colspan="3">
+			<% if(vo.getImage()!= null) {%>
+			<img width="150px" src="images/<%=vo.getImage()%>" width="100px"></td>
+			<%}%>
 		</tr>
 		<tr>
 			<td colspan="4" align="center">
@@ -49,9 +51,11 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 		</tr>
 	</table>
 </form>
+<!--  
 <p>
 	<a href="boardList.do">목록으로</a>
 </p>
+-->
 <!--  <script>
 	document.querySelector('input[type=button]').addEventListener('click',
 			function(e) {

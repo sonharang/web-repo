@@ -35,7 +35,9 @@ BoardVO vo = (BoardVO) request.getAttribute("vo");
 		</tr>
 	</table>
 </form>
+<!--  
 <p>
 	<a href="boardList.do">목록으로</a>
 </p>
+-->
 <%@include file="../layout/footer.jsp"%>
