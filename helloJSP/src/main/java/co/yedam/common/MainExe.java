@@ -2,9 +2,14 @@ package co.yedam.common;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
 
 import co.yedam.board.service.BoardVO;
 import co.yedam.board.serviceImpl.BoardDAO;
+import co.yedam.reply.mapper.ReplyMapper;
+import co.yedam.reply.service.ReplyVO;
 import co.yedam.student.service.StudentService;
 import co.yedam.student.service.StudentVO;
 import co.yedam.student.serviceImpl.StudentServiceImpl;
@@ -29,9 +34,9 @@ public class MainExe {
 //	}
 
 	public static void main(String[] args) {
-		BoardDAO dao = new BoardDAO();
-		BoardVO vo = new BoardVO();
-		System.out.println(dao.boardList());
+//		BoardDAO dao = new BoardDAO();
+//		BoardVO vo = new BoardVO();
+//		System.out.println(dao.boardList());
 		
 		
 		
@@ -86,6 +91,13 @@ public class MainExe {
 		//System.out.println("=======================================================================================================================");
 		//svc.listStudent().forEach(student -> System.out.println(student));//
 
+		
+		SqlSession session = 
+				DataSourceMybatis.getInstance().openSession(true);
+		ReplyMapper mapper = session.getMapper(ReplyMapper.class);
+		//System.out.println(mapper.replyList());
+		//System.out.println(mapper.deleteReply(4));
 	}
+	
 
 }//

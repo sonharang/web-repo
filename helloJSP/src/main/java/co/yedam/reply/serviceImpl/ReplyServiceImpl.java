@@ -15,22 +15,23 @@ public class ReplyServiceImpl implements ReplyService{
 	ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
 	@Override
 	public boolean addReply(ReplyVO vo) {
-		return false;
+	 return mapper.insertReply(vo) == 1 ;
 	}
 	@Override
 	public boolean editReply(ReplyVO vo) {
-		return false;
+		return mapper.updateReply(vo) == 1;
+		
 	}
 	@Override
-	public boolean removeReply(ReplyVO vo) {
-		return false;
+	public boolean removeReply(int replyNo) {
+		return mapper.deleteReply(replyNo) == 1;
 	}
 	@Override
-	public List<ReplyVO> replyList() {
-		return null;
+	public List<ReplyVO> replyList(int boardNo) {
+		return mapper.replyList(boardNo);
 	}
 	@Override
-	public ReplyVO getReply(int boardNo) {
-		return null;
+	public ReplyVO getReply(int replyNo) {
+		return mapper.selectReply(replyNo);
 	}
 }
