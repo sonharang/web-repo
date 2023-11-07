@@ -19,7 +19,7 @@ BoardVO vo = (BoardVO) request.getAttribute("vo");
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td><input type="text" name="writer" value="<%=vo.getWriter()%>"></td>
+			<td><input type="text" name="writer" value="<%=vo.getWriter()%>" readonly></td>
 		</tr>
 		<tr>
 			<td colspan="2"><textarea cols="40" rows="5" name="content"><%=vo.getContent()%></textarea></td>

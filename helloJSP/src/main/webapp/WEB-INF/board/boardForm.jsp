@@ -16,7 +16,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td><input type="text" readonly class="form-control" name="writer" value="<%=logId%>"></td>
+			<td><input type="text" readonly class="form-control" name="writer" value="<%=logId%>" readonly></td>
 		</tr>
 		<tr>
 			<td colspan="2"><textarea cols="40" rows="5" class="form-control" name="content"></textarea></td>

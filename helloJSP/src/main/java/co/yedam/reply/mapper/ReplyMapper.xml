@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.board.mapper.ReplyMapper">
+	<select id="replyList" resultType="co.yedam.reply.service.ReplyMapper">
+	 select * from reply where board_no =#{boardNo}
+	</select>
+</mapper>

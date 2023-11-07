@@ -21,7 +21,7 @@ public class LoginControl implements Command {
 		MemberVO vo = svc.loginCheck(id, pw);
 		HttpSession session = req.getSession();
 		session.setAttribute("logId", id);
-		session.setAttribute("respon",vo.getResponsibility() );
+		session.setAttribute("responsibility",vo.getResponsibility() );
 		if (svc.loginCheck(id, pw) != null) {
 			// session : 서버 - 클라이언트 , 세션에서 값저장하고 있음
 			try {

@@ -17,7 +17,7 @@
 <body>
 	<%
 	String logId = (String) session.getAttribute("logId"); //없으면 null값 리턴
-	String respon = (String) session.getAttribute("respon");
+	String responsibility = (String) session.getAttribute("responsibility");
 	%>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar-->
@@ -43,9 +43,9 @@
 				<%} else {%>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">로그아웃</a>
 				<%}%>
-				
+				 <%if(responsibility != null && responsibility.equals("Admin")) { %>
 				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberList.do">회원관리</a> 
-				
+				  <% } %>
 					<a class="list-group-item list-group-item-action list-group-item-light p-3"
 					href="#!">Events</a> <a
 					class="list-group-item list-group-item-action list-group-item-light p-3"
