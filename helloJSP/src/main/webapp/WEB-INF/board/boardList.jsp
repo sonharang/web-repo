@@ -8,7 +8,7 @@
 <jsp:include page="../layout/header.jsp"></jsp:include>
 
 <h3>게시판 목록</h3>
-${list }
+<!-- ${list } -->
 <table class="table">
 	<thead>
 		<tr>
