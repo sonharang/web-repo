@@ -27,11 +27,15 @@ public class ReplyServiceImpl implements ReplyService{
 		return mapper.deleteReply(replyNo) == 1;
 	}
 	@Override
-	public List<ReplyVO> replyList(int boardNo) {
-		return mapper.replyList(boardNo);
+	public List<ReplyVO> replyList(int boardNo, int page) {
+		return mapper.replyList(boardNo,page);
 	}
 	@Override
 	public ReplyVO getReply(int replyNo) {
 		return mapper.selectReply(replyNo);
+	}
+	@Override
+	public int getTotalCnt(int boardNo) {
+		return mapper.getTotalCnt(boardNo);
 	}
 }

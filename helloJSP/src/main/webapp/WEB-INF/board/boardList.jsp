@@ -35,8 +35,7 @@ List<BoardVO> list = (List<BoardVO>) request.getAttribute("list"); //List<BoardV
 	</tbody>
 </table>
 <p>
-	<a href="boardForm.do">등록화면</a> 
-	<a href="main.do">첫 페이지로</a>
+	<a href="boardForm.do">등록화면</a> <a href="main.do">첫 페이지로</a>
 </p>
 
 <%@include file="../layout/footer.jsp"%>

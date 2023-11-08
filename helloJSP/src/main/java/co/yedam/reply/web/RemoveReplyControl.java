@@ -19,35 +19,25 @@ public class RemoveReplyControl implements Command {
         @Override
         public void execute(HttpServletRequest req, HttpServletResponse resp) {
 
-                ReplyVO vo = new ReplyVO();
-                ReplyService svc = new ReplyServiceImpl();
+    		ReplyService svc = new ReplyServiceImpl();
 
-                String rno = req.getParameter("replyNo");
+    		String rno = req.getParameter("replyNo");
 
-                Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+    		Map<String, String> map = new HashMap<>();
 
-                Map<String, Object> map = new HashMap<>();
+    		Gson gson = new GsonBuilder().create();
 
-                if (svc.removeReply(Integer.parseInt(rno))) {
-                        try {
-                                map.put("retCode", "OK");
-                                map.put("vo", vo);
-                        } catch (Exception e) {
-                                e.printStackTrace();
-                        }
-                } else {
-                        try {
-                                map.put("retCode", "NG");
-                        } catch (Exception e) {
-                                e.printStackTrace();
-                        }
-                }
+    		if (svc.removeReply(Integer.parseInt(rno))) {
+    			map.put("retCode", "OK");
+    		} else {
+    			map.put("retCode", "NG");
+    		}
 
-                resp.setContentType("text/json; charset=UTF-8");
-                try {
-                        resp.getWriter().print(gson.toJson(map));
-                } catch (Exception e) {
-                        e.printStackTrace();
+    		resp.setContentType("text/json; charset=UTF-8");
+    		try {
+    			resp.getWriter().print(gson.toJson(map));
+    		} catch (Exception e) {
+    			e.printStackTrace();
                 }
         }
 

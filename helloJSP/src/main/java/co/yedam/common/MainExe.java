@@ -97,6 +97,7 @@ public class MainExe {
 		ReplyMapper mapper = session.getMapper(ReplyMapper.class);
 		//System.out.println(mapper.replyList());
 		//System.out.println(mapper.deleteReply(4));
+		//mapper.replyList(2,2).forEach(rep->System.out.print(rep));
 	}
 	
 

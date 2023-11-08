@@ -3,7 +3,7 @@
 <mapper namespace="co.yedam.board.mapper.BoardMapper">
 	<select id="selectList"
 		resultType="co.yedam.board.service.BoardVO">
-		SELECT * FROM BOARD ORDER BY BOARD_NO
+		 SELECT * FROM BOARD ORDER BY BOARD_NO
 	</select>
 
 	<select id="select" resultType="co.yedam.board.service.BoardVO"

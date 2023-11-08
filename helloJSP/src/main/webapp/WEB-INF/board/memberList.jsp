@@ -1,13 +1,13 @@
 <%@page import="co.yedam.board.service.MemberVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../layout/menu.jsp"%>
 <%@include file="../layout/header.jsp"%>
+
 <h3>게시판 목록</h3>
-<%
-List<MemberVO> list = (List<MemberVO>) request.getAttribute("list"); //List<BoardVO> 값이 들어있다 -> list
-%>
+
 <table class="table">
 	<thead>
 		<tr>
@@ -19,19 +19,15 @@ List<MemberVO> list = (List<MemberVO>) request.getAttribute("list"); //List<Boar
 		</tr>
 	</thead>
 	<tbody>
-		<%
-		for (MemberVO vo : list) {
-		%>
+		<c:forEach items="${list }" var="member">
 		<tr>
-			<td><%=vo.getMid()%></td>
-			<td><%=vo.getPass()%></td>
-			<td><%=vo.getName()%></td>
-			<td><%=vo.getPhone()%></td>
-			<td><%=vo.getResponsibility()%></td>
+			<td>${member.mid}</td>
+			<td>${member.pass}</td>
+			<td>${member.name}</td>
+			<td>${member.phone}</td>
+			<td>${member.responsibility}</td>
 		</tr>
-		<%
-		}
-		%>
+		</c:forEach>
 	</tbody>
 </table>
 
