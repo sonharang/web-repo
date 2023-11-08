@@ -136,7 +136,7 @@ ul>li {
 					showList(page);
 					return;
 				}else if(pg == 0){
-					document.querySelector('.pagenation').innerHTML ='';
+					document.querySelector('.pagenation').innerHTML ='댓글없음';
 					return;
 				}
 				result.list.forEach(reply => {
@@ -225,7 +225,14 @@ ul>li {
 				.then(result => {
 					if (result.retCode == 'OK') {
 						e.target.parentElement.remove();
-						showList(1);
+						if(document.querySelectorAll('#list > li').length == 1) {
+							showList(-1);	
+						}
+						else {
+							showList(page);
+						}
+						
+						
 					} else {
 						alert('삭제 실패');
 					}
