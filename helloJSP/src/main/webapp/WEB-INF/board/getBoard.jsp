@@ -32,62 +32,57 @@ ul>li {
 }
 </style>
 
-<%@include file="../layout/menu.jsp"%>
-<%@include file="../layout/header.jsp"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fm"%>
 
+<jsp:include page="../layout/menu.jsp"></jsp:include>
+<jsp:include page="../layout/header.jsp"></jsp:include>
 
 <h3>게시글 상세(조회)화면</h3>
-<%
-BoardVO vo = (BoardVO) request.getAttribute("bno");
-%>
 <form action="modifyForm.do" name="myFrm">
-	<input type="hidden" name="bno" value="<%=vo.getBoardNo()%>">
+	<input type="hidden" name="bno" value="{$bno.boardNo }"class="form-control">
 	<table class="table">
 		<tr>
 			<th>글번호</th>
-			<td class="boardNo"><%=vo.getBoardNo()%></td>
+			<td class="boardNo">${bno.boardNo }</td>
 			<th>작성일시</th>
-			<td><%=vo.getWriteDate()%></td>
+			<td><fm:formatDate value= "${bno.writeDate }" pattern="yyyy-MM-dd HH:mm:ss"></fm:formatDate></td>
 		</tr>
 		<tr>
 			<th>글제목</th>
-			<td colspan="3"><%=vo.getTitle()%></td>
+			<td colspan="3">${bno.title}</td>
 		</tr>
 		<tr>
-			<td colspan="4"><textarea rows="5" cols="40"><%=vo.getContent()%></textarea>
+			<td colspan="4"><textarea rows="5" cols="40">${bno.content }</textarea>
 			</td>
 		</tr>
 		<tr>
 			<th>이미지</th>
 			<td colspan="3">
-				<%
-				if (vo.getImage() != null) {
-				%> <img width="150px" src="images/<%=vo.getImage()%>" width="100px">
-			</td>
-			<%
-			}
-			%>
+			<c:if test=${!empty bno.image }>
+					<img width="150px" src="${images/bno.image }" width="100px">
+			</c:if>
+				</td>
 		</tr>
 		<tr>
 			<td colspan="4" align="center">
-				<%
-				if (logId != null && logId.equals(vo.getWriter())) {
-				%> <input type="submit" class="btn btn-primary" value="수정">
-				<input type="button" class="btn btn-warning" value="삭제"
-				onclick="location.href='removeBoard.do?bno=<%=vo.getBoardNo()%>'">
-				<%
-				} else {
-				%> <input type="submit" value="수정" disabled> <input
-				type="button" value="삭제" disabled> <%
- }
- %>
-			</td>
+			<c:choose>
+					<c:when test="${logId } == ${vo.writer }">
+						<input type="submit" class="btn btn-primary" value="수정">
+						<input type="button" class="btn btn-warning" value="삭제"
+							onclick="location.href='removeBoard.do?bno=${bno.boardNo}'" class="btn btn-warning">
+					</c:when>
+					<c:otherwise>
+						<input type="submit" value="수정" disabled>
+						<input type="button" value="삭제" disabled>
+					</c:otherwise>
+				</c:choose></td>
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td><%=vo.getWriter()%></td>
+			<td>${bno.writer }</td>
 			<th>조회수</th>
-			<td><%=vo.getViewCnt()%></td>
+			<td>${bno.viewCnt }</td>
 		</tr>
 	</table>
 </form>
@@ -123,9 +118,9 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 -->
 <script>
 	//댓글목록
-	let bno = "<%=vo.getBoardNo()%>";
+	let bno = ${bno.boardNo };
 	bno = document.querySelector('.boardNo').innerHTML;
-	let writer = "<%=logId%>";
+	let writer = "${logId }";
 	let page = 1;
 	console.log(bno);
 	console.log(writer);
@@ -266,4 +261,4 @@ BoardVO vo = (BoardVO) request.getAttribute("bno");
 			})
 	})
 </script>
-<%@include file="../layout/footer.jsp"%>
+<jsp:include page="../layout/footer.jsp"></jsp:include>
