@@ -225,7 +225,7 @@ ul>li {
 				.then(result => {
 					if (result.retCode == 'OK') {
 						e.target.parentElement.remove();
-						showList(-1);
+						showList(1);
 					} else {
 						alert('삭제 실패');
 					}
