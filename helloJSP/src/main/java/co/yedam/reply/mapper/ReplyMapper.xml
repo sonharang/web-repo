@@ -12,11 +12,12 @@
 		) A 
 		WHERE A.RN > (#{page} - 1) * 5
 		AND A.RN  <=(#{page}) * 5		
-		]]> 
+		]]>
 	</select>
 	<select id="selectReply"
 		resultType="co.yedam.reply.service.ReplyVO" parameterType="int">
-		select * from reply where reply_no =#{replyNo} order by #{replyNo}
+		select *
+		from reply where reply_no =#{replyNo} order by #{replyNo}
 	</select>
 	<insert id="insertReply"
 		parameterType="co.yedam.reply.service.ReplyVO">
@@ -29,13 +30,20 @@
 	</insert>
 	<update id="updateReply"
 		parameterType="co.yedam.reply.service.ReplyVO">
-		update reply set reply=#{reply} where reply_no=#{replyNo}
+		update reply set reply=#{reply} where
+		reply_no=#{replyNo}
 	</update>
 	<delete id="deleteReply" parameterType="int">
-		delete from reply where reply_no=#{replyNo}
+		delete from reply where
+		reply_no=#{replyNo}
 	</delete>
 	<select id="getTotalCnt" resultType="int">
 		select count(*) from reply
 		where board_no =#{boardNo}
+	</select>
+	<select id="getReplyCountByWriter" resultType="map">
+		select replyer, count(*) cnt
+		from reply
+		group by replyer
 	</select>
 </mapper>

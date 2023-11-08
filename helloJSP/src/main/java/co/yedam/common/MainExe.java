@@ -3,6 +3,7 @@ package co.yedam.common;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -98,6 +99,8 @@ public class MainExe {
 		//System.out.println(mapper.replyList());
 		//System.out.println(mapper.deleteReply(4));
 		//mapper.replyList(2,2).forEach(rep->System.out.print(rep));
+		List<Map<String, Object>> map = mapper.getReplyCountByWriter();
+		System.out.println(map);
 	}
 	
 

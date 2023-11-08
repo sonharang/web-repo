@@ -136,7 +136,8 @@ ul>li {
 					showList(page);
 					return;
 				}else if(pg == 0){
-					document.querySelector('.pagenation').innerHTML ='댓글없음';
+					console.log(document.querySelector('.pagenation'));
+					document.querySelector('.pagenation').innerHTML ='';
 					return;
 				}
 				result.list.forEach(reply => {

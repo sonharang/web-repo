@@ -1,6 +1,7 @@
 package co.yedam.reply.serviceImpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -37,5 +38,9 @@ public class ReplyServiceImpl implements ReplyService{
 	@Override
 	public int getTotalCnt(int boardNo) {
 		return mapper.getTotalCnt(boardNo);
+	}
+	@Override
+	public List<Map<String, Object>> getReplyCountBywriter() {
+		return mapper.getReplyCountByWriter();
 	}
 }
