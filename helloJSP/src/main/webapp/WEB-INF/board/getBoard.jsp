@@ -50,24 +50,24 @@ ul>li {
 		</tr>
 		<tr>
 			<th>글제목</th>
-			<td colspan="3">${bno.title}</td>
+			<td colspan="3">${bno.title }</td>
 		</tr>
 		<tr>
-			<td colspan="4"><textarea rows="5" cols="40">${bno.content }</textarea>
+			<td colspan="4"><textarea  class="form-control" rows="5" cols="40">${bno.content }</textarea>
 			</td>
 		</tr>
 		<tr>
 			<th>이미지</th>
 			<td colspan="3">
-			<c:if test=${!empty bno.image }>
-					<img width="150px" src="${images/bno.image }" width="100px">
+					<c:if test="${!empty bno.image }">
+					<img width="80px" src="images/${bno.image }">
 			</c:if>
 				</td>
 		</tr>
 		<tr>
 			<td colspan="4" align="center">
 			<c:choose>
-					<c:when test="${logId } == ${vo.writer }">
+					<c:when test="${!empty logId && logId == bno.writer }">
 						<input type="submit" class="btn btn-primary" value="수정">
 						<input type="button" class="btn btn-warning" value="삭제"
 							onclick="location.href='removeBoard.do?bno=${bno.boardNo}'" class="btn btn-warning">
@@ -118,7 +118,7 @@ ul>li {
 -->
 <script>
 	//댓글목록
-	let bno = ${bno.boardNo };
+	let bno = "${bno.boardNo }";
 	bno = document.querySelector('.boardNo').innerHTML;
 	let writer = "${logId }";
 	let page = 1;
