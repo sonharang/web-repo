@@ -14,7 +14,7 @@
 	</thead>
 	
 	<tbody>
-		<c:forEach items="${memlist }" var="member">
+		<c:forEach items="${list }" var="member">
 			<tr>
 				<td>${member.mid }</td>
 				<td>${member.pass }</td>
