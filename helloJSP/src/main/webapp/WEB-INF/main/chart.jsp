@@ -19,9 +19,9 @@
      			result.forEach(item =>{
      				dataAry.push([item.REPLYER, item.CNT])
      			})
+     			// [['writer', 'cnt'],['M001,12'],['M002,22'],['M003,32']]
      			console.log(dataAry);
-     			 var data = google.visualization.arrayToDataTable(dataAry);
-
+     			var data = google.visualization.arrayToDataTable(dataAry);
      	        var options = {
      	          title: '작성자 건수별',
      	          is3D: true,

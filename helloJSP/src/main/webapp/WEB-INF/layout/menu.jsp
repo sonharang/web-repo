@@ -56,7 +56,7 @@
 				</c:if>
 				<a
 					class="list-group-item list-group-item-action list-group-item-light p-3"
-					href="#!">Events</a> <a
+					href="chartForm.do">차트</a> <a
 					class="list-group-item list-group-item-action list-group-item-light p-3"
 					href="#!">Profile</a> <a
 					class="list-group-item list-group-item-action list-group-item-light p-3"

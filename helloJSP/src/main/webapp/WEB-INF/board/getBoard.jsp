@@ -136,8 +136,9 @@ ul>li {
 					showList(page);
 					return;
 				}else if(pg == 0){
-					console.log(document.querySelector('.pagenation'));
-					document.querySelector('.pagenation').innerHTML ='';
+					//console.log(document.querySelector('.pagenation'));
+					//document.querySelector('.pagenation').innerHTML ='';
+					showList(1);
 					return;
 				}
 				result.list.forEach(reply => {
@@ -226,8 +227,10 @@ ul>li {
 				.then(result => {
 					if (result.retCode == 'OK') {
 						e.target.parentElement.remove();
-						if(document.querySelectorAll('#list > li').length == 1) {
-							showList(-1);	
+						if(document.querySelectorAll('#list > li').length == 1 && page > 1) {
+							page = page -1;
+							showList(page -1);	
+							
 						}
 						else {
 							showList(page);

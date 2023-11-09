@@ -17,7 +17,7 @@ public class DrawChartControl implements Command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		// json 데이터 => 작성자, 건수
+		// json 데이터 => [작성자, 건수]
 		ReplyService svc = new ReplyServiceImpl();
 		List<Map<String, Object>> list = svc.getReplyCountBywriter();
 
