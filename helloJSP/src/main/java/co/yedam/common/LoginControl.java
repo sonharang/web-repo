@@ -20,7 +20,8 @@ public class LoginControl implements Command {
 		BoardService svc = new BoardServiceImpl();
 		MemberVO vo = svc.loginCheck(id, pw);
 		HttpSession session = req.getSession();
-		session.setAttribute("logId", id);
+		session.setAttribute("logId", vo.getMid());
+		session.setAttribute("userName", vo.getName());
 		session.setAttribute("responsibility",vo.getResponsibility() );
 		if (svc.loginCheck(id, pw) != null) {
 			// session : 서버 - 클라이언트 , 세션에서 값저장하고 있음

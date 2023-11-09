@@ -16,17 +16,16 @@
 <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
-	${logId },${responsibility }
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar-->
 		<div class="border-end bg-white" id="sidebar-wrapper">
 			<c:choose>
 				<c:when test="${empty logId }">
-					<div class="sidebar-heading border-bottom bg-light">(Guest)
+					<div class="sidebar-heading border-bottom bg-light">Guest
 						입니다.</div>
 				</c:when>
 				<c:otherwise>
-					<div class="sidebar-heading border-bottom bg-light">(${logId })
+					<div class="sidebar-heading border-bottom bg-light">${userName }님
 						환영합니다.</div>
 				</c:otherwise>
 			</c:choose>
